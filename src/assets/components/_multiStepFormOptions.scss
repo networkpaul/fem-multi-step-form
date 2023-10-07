@@ -1,0 +1,91 @@
+.multiStepForm-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.multiStepForm-option {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 1px solid $border-color;
+  background: $white;
+  padding: 20px 16px;
+  cursor: pointer;
+  width: 138px;
+  height: 160px;
+
+  &.multiStepForm-option--selected {
+    border: 1px solid $purple;
+  }
+}
+
+.multiStepForm-optionIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin-bottom: auto;
+
+  &.multiStepForm-optionIcon--arcade {
+    background-color: $orange;
+  }
+
+  &.multiStepForm-optionIcon--advanced {
+    background-color: $pink;
+  }
+
+  &.multiStepForm-optionIcon--pro {
+    background-color: $purple;
+  }
+}
+
+.multiStepForm-optionTitle {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: $denim;
+  margin-bottom: 8px;
+}
+
+.multiStepForm-optionPrice {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: $gray;
+  margin-bottom: 6px;
+}
+
+.multiStepForm-optionFreeMonth {
+  opacity: 0;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: $denim;
+
+  &.multiStepForm-optionFreeMonth--visible {
+    opacity: 1;
+  }
+}
+
+.multiStepForm-choices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 46px;
+  gap: 24px;
+}
+
+.multiStepForm-choice {
+  color: $gray;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  &.multiStepForm-choice--selected {
+    color: $denim;
+  }
+}

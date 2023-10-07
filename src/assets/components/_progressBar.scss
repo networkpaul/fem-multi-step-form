@@ -1,0 +1,58 @@
+.progressBar {
+  position: relative;
+}
+
+.progressBar-steps {
+  position: absolute;
+  padding: 45px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.progressBarStep {
+  display: flex;
+  gap: 16px;
+}
+
+.progressBarStep-textWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.progressBarStep-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: $white;
+  border: 1px solid $white;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+}
+
+.progressBarStep-textNumber {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  color: $lightblue;
+}
+
+.progressBarStep-text {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: $white;
+}

@@ -1,0 +1,21 @@
+.c2a {
+  border-radius: 8px;
+  border: 0;
+  color: $white;
+  padding: 14px 25px;
+  cursor: pointer;
+
+  &.c2a--disabled {
+    cursor: not-allowed;
+    background:  $gray;
+  }
+}
+
+.c2a-main {
+  background: $denim;
+}
+
+.c2a-secondary {
+  background: none;
+  color: $gray;
+}

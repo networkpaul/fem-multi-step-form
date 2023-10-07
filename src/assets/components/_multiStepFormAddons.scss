@@ -1,0 +1,48 @@
+.multiStepForm-addons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.multiStepForm-addon {
+  display: flex;
+  align-items: center;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 18px 24px;
+  justify-content: space-between;
+  cursor: pointer;
+
+  label { display: none; }
+
+  input[type="checkbox"] {
+    margin-right: 24px;
+    cursor: pointer;
+  }
+
+  &.multiStepForm-addon--selected {
+    border: 1px solid $purple;
+  }
+}
+
+.multiStepForm-addonText {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.multiStepForm-addonTitle {
+  color: $denim;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.multiStepForm-addonSubtitle {
+  color: $gray;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
