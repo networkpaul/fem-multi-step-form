@@ -38,9 +38,14 @@
 <script>
 export default {
   name: 'StepTwo',
+  props: {
+    payMonthly: {
+      type: Boolean,
+    }
+  },
+
   data() {
     return {
-      payMonthly: true,
       addonCards: [
         {
           id: 1,

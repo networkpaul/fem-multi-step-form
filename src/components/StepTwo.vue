@@ -83,8 +83,9 @@ export default {
 
   methods: {
     selectOption(optionId) {
-      this.selectedCardOption = optionId;
-      this.$emit('select-option');
+      this.selectedCardOption = optionId
+      this.$emit('select-option')
+      this.$emit('monthly', this.payMonthly)
     }
   }
 }

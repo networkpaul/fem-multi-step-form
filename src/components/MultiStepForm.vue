@@ -21,6 +21,7 @@
     <StepTwo
         v-else-if="!stepOne && stepTwo"
         @select-option="buttonNextStepDisabled = false"
+        @monthly="updateMonthly"
     >
       <template #buttonPreviousStep>
         <button
@@ -41,7 +42,9 @@
         </button>
       </template>
     </StepTwo>
-    <StepThree v-else-if="!stepOne && !stepTwo && stepThree">
+    <StepThree
+        v-else-if="!stepOne && !stepTwo && stepThree"
+        :pay-monthly="payMonthly">
       <template #buttonPreviousStep>
         <button
             class="c2a c2a-secondary"
@@ -73,7 +76,14 @@ export default {
       buttonNextStepDisabled: true,
       stepOne: true,
       stepTwo: false,
-      stepThree: false
+      stepThree: false,
+      payMonthly: null
+    }
+  },
+
+  methods: {
+    updateMonthly(value) {
+      this.payMonthly = value
     }
   },
 
