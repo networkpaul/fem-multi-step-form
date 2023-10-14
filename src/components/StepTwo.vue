@@ -6,43 +6,52 @@
       <div
           v-for="optionCard in optionCards"
           :key="optionCard.id"
-          :class="{ 'multiStepForm-option--selected': selectedCardOption === optionCard.id }"
+          :class="{ 'multiStepForm-option--selected': selectedCardOption === optionCard }"
           class="multiStepForm-option"
-          @click="selectOption(optionCard.id)"
+          @click="selectOption(optionCard)"
       >
         <span class="multiStepForm-optionIcon" :class="'multiStepForm-optionIcon--' + optionCard.title.toLowerCase()">
           <i></i>
         </span>
         <span class="multiStepForm-optionTitle">{{ optionCard.title }}</span>
-        <span v-if="!payMonthly" class="multiStepForm-optionPrice">{{ optionCard.pricePerMonth }}</span>
+        <span v-if="planType === 'monthly'" class="multiStepForm-optionPrice">{{ optionCard.pricePerMonth }}</span>
         <span v-else class="multiStepForm-optionPrice">{{ optionCard.pricePerYear }}</span>
-        <span :class="{ 'multiStepForm-optionFreeMonth--visible' : payMonthly}" class="multiStepForm-optionFreeMonth">2 months free</span>
+        <span :class="{ 'multiStepForm-optionFreeMonth--visible' : planType !== 'monthly'}" class="multiStepForm-optionFreeMonth">2 months free</span>
       </div>
     </div>
     <div class="multiStepForm-choices">
       <span
           class="multiStepForm-choice"
-          :class="{ 'multiStepForm-choice--selected' : !payMonthly }"
+          :class="{ 'multiStepForm-choice--selected' : planType === 'monthly' }"
       >
         Monthly
       </span>
       <label class="switch">
-        <input type="checkbox" v-model="payMonthly">
+        <input type="checkbox" @click="planType = planType === 'monthly' ? 'yearly' : 'monthly'">
         <span class="slider"></span>
       </label>
       <span
           class="multiStepForm-choice"
-          :class="{ 'multiStepForm-choice--selected' : payMonthly }"
+          :class="{ 'multiStepForm-choice--selected' : planType !== 'monthly' }"
       >
         Yearly
       </span>
     </div>
-    <div v-if="$slots.buttonNextStep || $slots.buttonPreviousStep" class="multiStepForm-actions">
-      <div v-if="$slots.buttonPreviousStep" class="multiStepForm-previousStep">
-        <slot name="buttonPreviousStep" />
+    <div class="multiStepForm-actions">
+      <div class="multiStepForm-previousStep">
+        <button class="c2a c2a-secondary" @click="previousStep">
+          Go Back
+        </button>
       </div>
-      <div v-if="$slots.buttonNextStep" class="multiStepForm-nextStep">
-        <slot name="buttonNextStep" />
+      <div class="multiStepForm-nextStep">
+        <button
+            :class="{ 'c2a--disabled': buttonNextStepDisabled }"
+            class="c2a c2a-main"
+            :disabled="buttonNextStepDisabled"
+            @click="nextStep"
+        >
+          Next Step
+        </button>
       </div>
     </div>
   </div>
@@ -53,8 +62,10 @@ export default {
   name: 'StepTwo',
   data() {
     return {
+      currentStep: 2,
+      buttonNextStepDisabled: true,
       selectedCardOption: null,
-      payMonthly: true,
+      planType: 'monthly',
       optionCards: [
         {
           id: 1,
@@ -81,10 +92,35 @@ export default {
     }
   },
 
+  computed: {
+    allInputsFilled() {
+      return !!this.selectedCardOption
+    }
+  },
+
   methods: {
-    selectOption(optionId) {
-      this.selectedCardOption = optionId;
-      this.$emit('select-option');
+    nextStep() {
+      this.$emit('next-step', {
+        plan: this.selectedCardOption,
+        planType: this.planType,
+        currentStep: this.currentStep,
+      });
+    },
+
+    previousStep() {
+      this.$emit('previous-step', this.currentStep);
+    },
+
+    selectOption(optionCard) {
+      this.selectedCardOption = optionCard
+    }
+  },
+
+  watch: {
+    allInputsFilled(value) {
+      if (this.allInputsFilled) {
+        this.buttonNextStepDisabled = false
+      }
     }
   }
 }

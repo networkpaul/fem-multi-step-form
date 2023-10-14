@@ -16,12 +16,16 @@
         <input v-model="phone" id="phone" type="tel" placeholder="e.g. +1 234 567 890" />
       </div>
     </form>
-    <div v-if="$slots.buttonNextStep || $slots.buttonPreviousStep" class="multiStepForm-actions">
-      <div v-if="$slots.buttonPreviousStep" class="multiStepForm-previousStep">
-        <slot name="buttonPreviousStep" />
-      </div>
-      <div v-if="$slots.buttonNextStep" class="multiStepForm-nextStep">
-        <slot name="buttonNextStep" />
+    <div class="multiStepForm-actions">
+      <div class="multiStepForm-nextStep">
+        <button
+            :class="{ 'c2a--disabled': buttonNextStepDisabled }"
+            class="c2a c2a-main"
+            :disabled="buttonNextStepDisabled"
+            @click="nextStep"
+        >
+          Next Step
+        </button>
       </div>
     </div>
   </div>
@@ -35,24 +39,33 @@ export default {
       name: null,
       email: null,
       phone: null,
+      buttonNextStepDisabled: true,
+      currentStep: 1
     }
   },
 
   computed: {
-    allFieldsFilled() {
-      if (this.name && this.email && this.phone) {
-        return true
-      }
+    allInputsFilled() {
+      return !!this.name && !!this.email && !!this.phone
     }
   },
 
-  updated() {
-    if (this.allFieldsFilled) {
-      this.$emit('all-fields-filled')
+  methods: {
+    nextStep() {
+      this.$emit('next-step', {
+        name: this.name,
+        email: this.email,
+        phone: this.phone,
+        currentStep: this.currentStep,
+      });
     }
+  },
 
-    if (!this.allFieldsFilled) {
-      this.$emit('no-fields-filled')
+  watch: {
+    allInputsFilled(value) {
+      if (this.allInputsFilled) {
+        this.buttonNextStepDisabled = false
+      }
     }
   }
 }

@@ -1,62 +1,13 @@
 <template>
   <div class="multiStepForm">
-    <ProgressBar />
-    <StepOne
-        v-if="stepOne"
-        class="multiStepForm-step"
-        @all-fields-filled="buttonNextStepDisabled = false"
-        @no-fields-filled="buttonNextStepDisabled = true"
-    >
-      <template #buttonNextStep>
-        <button
-            :class="{ 'c2a--disabled': buttonNextStepDisabled }"
-            class="c2a c2a-main"
-            :disabled="buttonNextStepDisabled"
-            @click="stepOne = false, stepTwo = true"
-        >
-          Next Step
-        </button>
-      </template>
-    </StepOne>
-    <StepTwo
-        v-else-if="!stepOne && stepTwo"
-        @select-option="buttonNextStepDisabled = false"
-    >
-      <template #buttonPreviousStep>
-        <button
-            class="c2a c2a-secondary"
-            @click="stepOne = true, stepTwo = false"
-        >
-          Go Back
-        </button>
-      </template>
-      <template #buttonNextStep>
-        <button
-            :class="{ 'c2a--disabled': buttonNextStepDisabled }"
-            class="c2a c2a-main"
-            :disabled="buttonNextStepDisabled"
-            @click="stepTwo = false, stepThree = true"
-        >
-          Next Step
-        </button>
-      </template>
-    </StepTwo>
-    <StepThree v-else-if="!stepOne && !stepTwo && stepThree">
-      <template #buttonPreviousStep>
-        <button
-            class="c2a c2a-secondary"
-            @click="stepTwo = true, stepThree = false"
-        >
-          Go Back
-        </button>
-      </template>
-      <template #buttonNextStep>
-        <button class="c2a c2a-main">
-          Next Step
-        </button>
-      </template>
-    </StepThree>
+    <ProgressBar :current-step="currentStep" />
+    <StepOne v-if="currentStep === 1" @next-step="handleStepData" />
+    <StepTwo v-else-if="currentStep === 2" @next-step="handleStepData" @previous-step="previousStep" />
+    <StepThree v-else-if="currentStep === 3" @next-step="handleStepData" @previous-step="previousStep" :form-infos="formInfos" />
+    <StepFour v-else-if="currentStep === 4" @next-step="handleStepData" @previous-step="previousStep" @change-plan="changePlan" :form-infos="formInfos" />
+    <StepFive v-else-if="currentStep === 5" />
   </div>
+  <pre>{{ formInfos }}</pre>
 </template>
 
 <script>
@@ -64,21 +15,35 @@ import ProgressBar from "./ProgressBar.vue";
 import StepOne from "./StepOne.vue";
 import StepTwo from "./StepTwo.vue";
 import StepThree from "./StepThree.vue";
+import StepFour from "./StepFour.vue";
+import StepFive from "./StepFive.vue";
 
 export default {
   name: 'MultiStepForm',
-  components: {StepThree, StepTwo, StepOne, ProgressBar},
+  components: {StepFive, StepFour, StepThree, StepTwo, StepOne, ProgressBar},
   data() {
     return {
-      buttonNextStepDisabled: true,
-      stepOne: true,
-      stepTwo: false,
-      stepThree: false
+      currentStep: 1,
+      formInfos: {}
     }
   },
 
-  updated() {
-    this.buttonNextStepDisabled = true
+  methods: {
+    previousStep() {
+      this.currentStep -= 1
+    },
+
+    changePlan() {
+      this.currentStep = 2
+    },
+
+    handleStepData(data) {
+      this.formInfos = { ...this.formInfos, ...data }
+
+      this.$nextTick(() => {
+        this.currentStep += 1
+      })
+    },
   }
 }
 </script>
