@@ -7,7 +7,6 @@
     <StepFour v-else-if="currentStep === 4" @next-step="handleStepData" @previous-step="previousStep" @change-plan="changePlan" :form-infos="formInfos" />
     <StepFive v-else-if="currentStep === 5" />
   </div>
-  <pre>{{ formInfos }}</pre>
 </template>
 
 <script>
