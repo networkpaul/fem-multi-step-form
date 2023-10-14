@@ -9,7 +9,8 @@
           :step-text="step.text">
       </ProgressBarStep>
     </div>
-    <img class="progressBar-background" src="@/images/bg-sidebar-desktop.svg" alt="progressBar-background">
+    <img class="progressBar-background progressBar-background--desktop" src="@/images/bg-sidebar-desktop.svg" alt="progressBar-background">
+    <img class="progressBar-background progressBar-background--mobile" src="@/images/bg-sidebar-mobile.svg" alt="progressBar-background">
   </div>
 </template>
 
