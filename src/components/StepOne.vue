@@ -16,7 +16,7 @@
         <input v-model="phone" id="phone" type="tel" placeholder="e.g. +1 234 567 890" />
       </div>
     </form>
-    <div class="multiStepForm-actions">
+    <div class="multiStepForm-actions multiStepForm-actions--nextOnly">
       <div class="multiStepForm-nextStep">
         <button
             :class="{ 'c2a--disabled': buttonNextStepDisabled }"

@@ -1,4 +1,4 @@
-@mixin media-mobile {
+@mixin media-mobile() {
   @media (max-width: $mobile-size) {
     @content;
   }

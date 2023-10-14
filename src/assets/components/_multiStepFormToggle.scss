@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: $denim;
   transition: .4s;
 }
 
@@ -31,10 +31,6 @@
   bottom: 4px;
   background-color: $white;
   transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: $denim;
 }
 
 input:focus + .slider {
