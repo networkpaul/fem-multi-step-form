@@ -1,29 +1,29 @@
-# fem-multi-step-form
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e51ce14e-1a33-4b21-960e-74816ea1f1e3/deploy-status)](https://app.netlify.com/sites/loquacious-starlight-a92cc5/deploys)
 
-This template should help get you started developing with Vue 3 in Vite.
+# Multistep Form Challenge
 
-## Recommended IDE Setup
+This project is a solution to the "Multistep Form" challenge from Frontend Mentor. It involves building a multi-step form that captures user information across multiple sections.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+**Live Demo**: [Link to the live demo](https://loquacious-starlight-a92cc5.netlify.app/)
 
-## Customize configuration
+## Overview
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+The Multistep Form Challenge is a practical exercise in creating a user-friendly multi-step form for data collection. This project aims to demonstrate the use of HTML, CSS, and JavaScript to create an interactive and responsive form. The challenge can be found on [Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ).
 
-## Project Setup
+## Features
 
-```sh
-npm install
-```
+- Multi-step form.
+- Responsive design for various screen sizes.
+- Clear and intuitive user interface.
 
-### Compile and Hot-Reload for Development
+## Technologies Used
 
-```sh
-npm run dev
-```
+- HTML
+- CSS
+- JavaScript (vue.js)
 
-### Compile and Minify for Production
+## Installation
 
-```sh
-npm run build
-```
+1. Clone the repository or download the ZIP file.
+2. npm install
+3. npm run dev
