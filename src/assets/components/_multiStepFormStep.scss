@@ -32,6 +32,10 @@
   margin-top: 92px;
 }
 
+.multiStepForm-actions--nextOnly {
+  justify-content: flex-end;
+}
+
 .multiStepForm-previousStep,
 .multiStepForm-NextStep {
   width: max-content;

@@ -15,9 +15,16 @@
   width: 138px;
   height: 160px;
 
-  &.multiStepForm-option--selected {
+  &.multiStepForm-option--selected,
+  &:hover {
     border: 1px solid $purple;
   }
+}
+
+.multiStepForm-optionBottom{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 .multiStepForm-optionIcon {
@@ -25,6 +32,7 @@
   height: 40px;
   border-radius: 100%;
   margin-bottom: auto;
+  display: block;
 
   &.multiStepForm-optionIcon--arcade {
     background-color: $orange;
@@ -87,5 +95,24 @@
 
   &.multiStepForm-choice--selected {
     color: $denim;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .multiStepForm-options {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .multiStepForm-option {
+    width: 100%;
+    height: max-content;
+    padding: 14px 16px;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .multiStepForm-optionBottom {
+    margin-top: 0;
   }
 }

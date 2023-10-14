@@ -13,14 +13,26 @@
 
 .c2a-main {
   background: $denim;
+
+  &:hover:not(.c2a--disabled) {
+    background: $denim-light;
+  }
 }
 
 .c2a-confirm {
   background: $purple;
+
+  &:hover {
+      background: $purple-light;
+  }
 }
 
 .c2a-secondary {
   background: none;
   color: $gray;
   padding: 0;
+
+  &:hover {
+    color: $denim;
+  }
 }
