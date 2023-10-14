@@ -5,6 +5,7 @@
           v-for="step in steps"
           :key="step.number"
           :step-number="step.number"
+          :current-step="currentStep"
           :step-text="step.text">
       </ProgressBarStep>
     </div>
@@ -18,6 +19,14 @@ import ProgressBarStep from "@/components/ProgressBarStep.vue";
 export default {
   name: 'ProgressBar',
   components: {ProgressBarStep},
+
+  props: {
+    currentStep: {
+      type: Number,
+      default: 1
+    }
+  },
+
   data() {
     return {
       steps: [

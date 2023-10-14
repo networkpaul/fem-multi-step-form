@@ -1,5 +1,5 @@
 <template>
-  <div class="progressBarStep">
+  <div :class="{ 'progressBarStep--current': currentStep === stepNumber }" class="progressBarStep">
     <span class="progressBarStep-number">{{ stepNumber }}</span>
     <div class="progressBarStep-textWrapper">
       <span class="progressBarStep-textNumber">Step {{ stepNumber }}</span>
@@ -19,6 +19,10 @@ export default {
     stepText: {
       type: String,
       default: null
+    },
+    currentStep: {
+      type: Number,
+      default: 1
     }
   }
 }
